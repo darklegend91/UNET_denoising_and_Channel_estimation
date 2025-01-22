@@ -61,7 +61,7 @@ def unet_model(input_shape):
     return model
 
 # Define input shape based on the generated data
-input_shape = (num_users + num_irs_elements, num_antennas, 1)
+input_shape = (4 + 16, 8, 1)  # 4 users, 8 antennas, 16 IRS elements
 
 # Create the U-Net model
 model = unet_model(input_shape)

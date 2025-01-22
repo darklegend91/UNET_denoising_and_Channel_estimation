@@ -9,10 +9,13 @@ def generate_data(num_samples, num_users, num_antennas, num_irs_elements):
         # Randomly generate channel data
         H_users = np.random.randn(num_users, num_antennas)  # User to antenna channel
         H_irs = np.random.randn(num_irs_elements, num_antennas)  # IRS to antenna channel
-        noise = np.random.randn(num_users, num_antennas)  # Gaussian noise
-
+        
         # Combine the data into a single array
         X = np.concatenate((H_users, H_irs), axis=0)  # Combine the two channels
+
+        # Generate noise with the same shape as X
+        noise = np.random.randn(*X.shape)  # Noise with shape matching X
+
         Y = X + noise  # Denoised signal (noisy channel + noise)
 
         # Add data to the dataset
